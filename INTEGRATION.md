@@ -50,15 +50,19 @@ Located in `launcher/`, an SDL3-based launcher that provides a unified interface
 
 **Building the Launcher:**
 ```bash
-# Install SDL3 first
-git clone --depth 1 https://github.com/libsdl-org/SDL.git SDL3
-cd SDL3 && mkdir build && cd build
-cmake .. && make -j$(nproc) && sudo make install && sudo ldconfig
+# Install SDL3 first (see "Installing SDL3" below)
 
 # Build Pentagram with launcher
 mkdir build && cd build
 cmake .. -DBUILD_LAUNCHER=ON
 make pentagram-launcher
+```
+
+**Installing SDL3:**
+```bash
+git clone --depth 1 https://github.com/libsdl-org/SDL.git SDL3
+cd SDL3 && mkdir build && cd build
+cmake .. && make -j$(nproc) && sudo make install && sudo ldconfig
 ```
 
 **Running the Launcher:**
@@ -103,17 +107,33 @@ Located in `docs/`, comprehensive documentation for advanced AI/NPC systems:
 
 This project now supports both build systems:
 
-### CMake (New)
-Modern, cross-platform build system for shared components and launcher:
+### CMake (New - Experimental)
+The CMake build system is provided for:
+- Building the unified game launcher (requires SDL3)
+- Future integration of shared components library
 
+**Note**: The shared components library has dependencies on the main Pentagram codebase. Full integration is planned for a future release. The current CMake build focuses on the launcher component.
+
+**Quick Start:**
 ```bash
+# Without SDL3 - configuration only
 mkdir build && cd build
+cmake ..
+
+# With SDL3 - build launcher
+# First install SDL3 (see below)
 cmake .. -DBUILD_LAUNCHER=ON
-make
-sudo make install
+make pentagram-launcher
 ```
 
-### Autotools (Legacy)
+**Installing SDL3:**
+```bash
+git clone --depth 1 https://github.com/libsdl-org/SDL.git SDL3
+cd SDL3 && mkdir build && cd build
+cmake .. && make -j$(nproc) && sudo make install && sudo ldconfig
+```
+
+### Autotools (Primary)
 Traditional build system for main Pentagram engine:
 
 ```bash
@@ -122,6 +142,8 @@ Traditional build system for main Pentagram engine:
 make
 sudo make install
 ```
+
+**This is the recommended build system for building the Pentagram engine itself.**
 
 ## Dependencies
 
