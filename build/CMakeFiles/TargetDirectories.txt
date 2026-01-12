@@ -1,2 +1,0 @@
-/home/runner/work/u8p/u8p/build/CMakeFiles/edit_cache.dir
-/home/runner/work/u8p/u8p/build/CMakeFiles/rebuild_cache.dir
