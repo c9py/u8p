@@ -351,6 +351,9 @@
             // Load CheerpX runtime
             const script = document.createElement('script');
             script.src = 'https://cxrtnc.leaningtech.com/1.0.6/cx.js';
+            // Add integrity check when available from CDN provider
+            // For now, note that CheerpX is a proprietary runtime
+            script.crossOrigin = 'anonymous';
             document.head.appendChild(script);
             
             return new Promise((resolve, reject) => {

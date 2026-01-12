@@ -10,6 +10,10 @@ target_include_directories(pentagram-launcher PRIVATE
     ${SDL3_INCLUDE_DIRS}
 )
 
+# Note: Using ${SDL3_LIBRARIES} instead of imported targets
+# because SDL3 is found via pkg-config, which doesn't provide
+# imported targets. When SDL3 provides CMake config files,
+# prefer: target_link_libraries(pentagram-launcher PRIVATE SDL3::SDL3)
 target_link_libraries(pentagram-launcher PRIVATE
     ${SDL3_LIBRARIES}
 )
